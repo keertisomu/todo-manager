@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import todoJson from "./todo";
+import TodoItem from "./todoItem";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const [todoTitle, setTodoTitle] = useState("");
+  const [todos, setTodos] = useState(todoJson);
+  
+  useEffect(() => {
+    console.log(todos);
+  })
+
+  const submit = (e) => {
+    e.preventDefault();
+    setTodos([
+      ...todos,
+      {
+        id: "sjdjdjdj-jdjdjdjd-djdj",
+        title: todoTitle,
+        color: "sdfdsfd"
+      }
+    ]);
+    setTodoTitle("");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <form onSubmit={submit}>
+        <div style={{ padding: "10px" }}>
+          <input
+            type="text"
+            value={todoTitle}
+            onChange={(e) => setTodoTitle(e.target.value)}
+          />
+          <button style={{ margin: "5px" }}>Add</button>
+        </div>
+      </form>
+      {todos.map((item) => {
+        return (
+          <TodoItem {...item} />  
+        );
+      })}
+    </>
   );
 }
-
-export default App;
