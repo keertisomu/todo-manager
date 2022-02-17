@@ -42,3 +42,16 @@
     transform: rotate(360deg);
   }
 }
+
+.add-todo {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 0;
+  border: 1px solid transparent;
+}
+
+.add-btn {
+  margin-top: -4px;
+  margin-left: 5px;
+}

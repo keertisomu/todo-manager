@@ -2,12 +2,17 @@
     {
       "id": "0175d1f0-a8c6-41bf-8d02-df5734d829a4",
       "title": "buy groceries",
-      "color": "#00c4e2"
+      "description": "Tomatoes, onions, lettuce and spinach",
+      "color": "#00c4e2",
+      "dueDate": "2021-02-20T18:25:43.511Z"
     },
     {
       "id": "83c7ba2f-7392-4d7d-9e23-35adbe186046",
       "title": "lawn",
-      "color": "#26ac56"
+      "description": "mow the lawns",
+      "color": "#26ac56",
+      "dueDate": "2021-02-19T18:25:43.511Z"
+
     }
   ]
   

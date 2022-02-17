@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import todoJson from "./todo";
 import TodoItem from "./todoItem";
+import AddTodo  from "./AddTodo";
 import "./App.css";
 
 export default function App() {
@@ -11,31 +12,22 @@ export default function App() {
     console.log(todos);
   })
 
-  const submit = (e) => {
-    e.preventDefault();
+  const submit = (title, description, todoDate) => {
     setTodos([
       ...todos,
       {
         id: "sjdjdjdj-jdjdjdjd-djdj",
-        title: todoTitle,
-        color: "sdfdsfd"
+        title: title,
+        color: "sdfdsfd",
+        description,
+        dueDate: todoDate
       }
     ]);
-    setTodoTitle("");
   };
 
   return (
     <>
-      <form onSubmit={submit}>
-        <div style={{ padding: "10px" }}>
-          <input
-            type="text"
-            value={todoTitle}
-            onChange={(e) => setTodoTitle(e.target.value)}
-          />
-          <button style={{ margin: "5px" }}>Add</button>
-        </div>
-      </form>
+      <AddTodo submitCallBack={submit} />
       {todos.map((item) => {
         return (
           <TodoItem {...item} />  
