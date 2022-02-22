@@ -1,43 +1,52 @@
 import React, { useState } from "react";
 import "./App.css";
 
-export default function AddTodo({submitCallBack = (f) => f}){
-    const [todoTitle, setTodoTitle] = useState("");
-    const [todoDescription, setTodoDescription] = useState("");
-    const [todoDate, setTodoDate] = useState();
+export default function AddTodo({ submitCallBack = (f) => f }) {
+  const [todoTitle, setTodoTitle] = useState("");
+  const [todoDescription, setTodoDescription] = useState("");
+  const [todoDate, setTodoDate] = useState();
 
-    const submit = (e) => {
-        e.preventDefault();
-        submitCallBack(todoTitle, todoDescription, todoDate);
-    }
-    return(
-        <>
+  const submit = (e) => {
+    e.preventDefault();
+    submitCallBack(todoTitle, todoDescription, todoDate);
+  };
+  return (
+    <>
+      <div class="form-width">
         <form onSubmit={submit}>
-        <div class="add-todo">
-            <span class="label label-default">Todo Name</span>
+          <div class="form-group">
+            <label class="label label-default">Todo Name</label>
             <input
-            type="text"
-            value={todoTitle}
-            placeholder="add a todo"
-            onChange={(e) => setTodoTitle(e.target.value)}
+              type="text"
+              value={todoTitle}
+              class="form-control"
+              placeholder="add a todo"
+              onChange={(e) => setTodoTitle(e.target.value)}
             />
-            <span class="label label-default">Todo Description</span>
+          </div>
+          <div class="form-group">
+            <label class="label label-default">Todo Description</label>
             <input
-            type="text"
-            value={todoDescription}
-            placeholder="add a todo"
-            onChange={(e) => setTodoDescription(e.target.value)}
+              type="text"
+              class="form-control"
+              value={todoDescription}
+              placeholder="add a todo"
+              onChange={(e) => setTodoDescription(e.target.value)}
             />
-             <span class="label label-default">Due date</span>
+          </div>
+          <div class="form-group">
+            <label class="label label-default">Due date</label>
             <input
-            type="text"
-            value={todoDate}
-            placeholder="add a todo"
-            onChange={(e) => setTodoDate(e.target.value)}
+              type="text"
+              class="form-control"
+              value={todoDate}
+              placeholder="add a todo"
+              onChange={(e) => setTodoDate(e.target.value)}
             />
-            <button  class="btn add-btn">Add</button>
-        </div>
-      </form>
-        </>
-    );
+          </div>
+          <button class="btn btn-primary">Add</button>
+        </form>
+      </div>
+    </>
+  );
 }
