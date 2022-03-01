@@ -22,22 +22,22 @@ export default function AddTodo({ submitCallBack = (f) => f }) {
               class="form-control"
               placeholder="add a todo"
               onChange={(e) => setTodoTitle(e.target.value)}
+              required
             />
           </div>
           <div class="form-group">
             <label class="label label-default">Todo Description</label>
-            <input
-              type="text"
+            <textarea
               class="form-control"
               value={todoDescription}
-              placeholder="add a todo"
+              placeholder="provide some desrcription"
               onChange={(e) => setTodoDescription(e.target.value)}
             />
           </div>
           <div class="form-group">
             <label class="label label-default">Due date</label>
             <input
-              type="text"
+              type="datetime-local"
               class="form-control"
               value={todoDate}
               placeholder="add a todo"

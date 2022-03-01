@@ -28,12 +28,6 @@
   color: #61dafb;
 }
 
-.todoborder {
-  border-style: solid;
-  border-color: #287ec7;
-  margin: 10px;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -64,8 +58,25 @@
 
 .flex-container {
   display: flex;
+  margin-top: 25px;
+  margin-left: 500px;
+  height: 50%;
 }
 
 .flex-child {
   flex: 1;
+}
+
+.flex-child.sec-child {
+  width: 100px;
+  height: 400px;
+  overflow-y: auto;
+  border-style: solid;
+  border-color: #99914c;
+}
+
+.todoborder {
+  border-style: solid;
+  border-color: #287ec7;
+  margin: 10px;
 }
