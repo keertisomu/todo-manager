@@ -2,18 +2,23 @@ import React, { useState, useEffect } from "react";
 import todoJson from "./todo";
 import TodoItem from "./todoItem";
 import AddTodo from "./AddTodo";
-import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import "./App.css";
+import EditTodo from "./EditTodo";
 
 export default function App() {
-  const [todoTitle, setTodoTitle] = useState("");
   const [todos, setTodos] = useState(todoJson);
+  const [show, setShow] = useState(false);
+  const [editTodoId, setEditTodoId] = useState("");
 
   useEffect(() => {
     console.log(todos);
   });
+
+  useEffect(() => {
+    if (!show) {
+      setEditTodoId("");
+    }
+  }, [show]);
 
   const submit = (title, description, todoDate) => {
     setTodos([
@@ -28,10 +33,16 @@ export default function App() {
     ]);
   };
 
-  const logTodoDeletItem = (id) => {
-    console.log(`the todo item we want to delete :  ${id}`);
+  // delete a todoItem
+  const deleteTodoItem = (id) => {
     const newListWithDeletedTodo = todos.filter((item) => item.id !== id);
     setTodos(newListWithDeletedTodo);
+  };
+
+  // edit a todoItem
+  const editTodoItem = (id) => {
+    setEditTodoId(id);
+    setShow(true);
   };
 
   return (
@@ -43,7 +54,12 @@ export default function App() {
         <div class="flex-child sec-child">
           {todos.map((item) => {
             return (
-              <TodoItem {...item} onDeleteTodo={(id) => logTodoDeletItem(id)} />
+              <TodoItem
+                key={item.id}
+                {...item}
+                onDeleteTodo={(id) => deleteTodoItem(id)}
+                onEditTodo={(id) => editTodoItem(id)}
+              />
             );
           })}
         </div>
